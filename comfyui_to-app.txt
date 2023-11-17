@@ -1,0 +1,17 @@
+
+   
+import subprocess
+
+ call_on_start = None
+    if args.auto_launch:
+        def startup_server(address, port):
+            import webbrowser
+            if os.name == 'nt' and address == '0.0.0.0':
+                address = '127.0.0.1'
+            #webbrowser.open(f"http://{address}:{port}")
+            chrome_path = r'C:/Program Files/Google/Chrome/Application/chrome.exe'
+            url = f"http://{address}:{port}"
+            cmd = [chrome_path, '--app=' + url]
+            subprocess.Popen(cmd)
+        call_on_start = startup_server
+
